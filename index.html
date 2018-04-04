@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Calculator</title>
+
+  <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <!-- Added a link to Bootstrap-->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+
+</head>
+<body>
+
+  <div class="jumbotron">
+    <h1 class="text-center">jQuery Calculator</h1>
+    <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Calculator Panel -->
+      <div class="col-lg-4">
+        <div class="card">
+          <h3 class="card-header">Gems</h3>
+
+          <div class="card-body">
+            <button id="button-1" class="btn btn-primary number" value="1"><h1>G 1</h1></button>
+            <button id="button-2" class="btn btn-primary number" value="2"><h1>G 2</h1></button>
+            <button id="button-3" class="btn btn-primary number" value="3"><h1>G 3</h1></button>
+            <button id="button-4" class="btn btn-primary number" value="4"><h1>G 4</h1></button>
+            <br><br>
+            <button id="button-plus" class="btn btn-danger operator" value="plus"><h1>+</h1></button>
+            
+            <br><br>
+           
+            <button id="button-equal" class="btn btn-success equal" value="equals"><h1>=</h1></button>
+            <br><br>
+            <button id="button-clear" class="btn btn-dark clear" value="clear"><h1>clear</h1></button>
+          </div>
+        </div>
+      </div>
+<div class="col-lg-4">
+  <h1 id="winning-number-higher" value = "20">Winning Number <span class="winning-number-span"></span></h1>
+  
+</div>
+      <!-- Result Panel -->
+      <div class="col-lg-4">
+        <div class="card">
+          <h3 class="card-header">Result</h3>
+          <div class="card-body">
+            <!-- <h1 id="current-sum"></h1> -->
+            <!-- <h1 id="operator"></h1> -->
+            <h1 id="winning-number" value = "20">Winning Number 20</h1>
+            <hr>
+            <h1 id="current-sum"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="resources/js/app.js"></script>
+
+</body>
+</html>
