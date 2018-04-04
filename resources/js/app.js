@@ -1,3 +1,7 @@
+    
+    const wimningNumberScreen = document.querySelector('.winning-number-span');
+      
+    winningNumberScreen = "20";
     $(document).ready(function() {
 
       // Make our variables global to the runtime of our application
@@ -11,7 +15,8 @@
       let g2Value = 2;
       let g3Value = 3;
       let g4Value = 4;
-      
+
+     
       // var result = 0;
       // var isOperatorChosen = false;
       // var isCalculated = false;
@@ -36,7 +41,6 @@
           currentSum += parseInt($(this).val());
           var n = currentSum.toString();
           $("#current-sum").text(n);
-          debugger;
         }
         // // Check if we've already run a calculation, if so... we'll just.
         // if (hasLost === true) {
@@ -44,15 +48,15 @@
         // }
 
         // If operator is chosen, we should be writing the secondNumber, otherwise, the firstNumber
-        if (isOperatorChosen) {
-          secondNumber += $(this).val();
-          $("#second-number").text(secondNumber);
+        // if (isOperatorChosen) {
+        //   secondNumber += $(this).val();
+        //   $("#second-number").text(secondNumber);
 
-        }
-        else {
-          firstNumber += $(this).val();
-          $("#first-number").text(firstNumber);
-        }
+        // }
+        // else {
+        //   firstNumber += $(this).val();
+        //   $("#first-number").text(firstNumber);
+        // }
 
       }).on("click", ".operator", function() {
 
