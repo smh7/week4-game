@@ -15,7 +15,9 @@ const minGoal = 19,
       maxGoal = 120,
       minVals = 1,
       maxVals = 12,
-      winningNumber = 0;
+      winningNumber = 0
+      wins = 0,
+      losses = 0;
       let currentSum = 0;
       
   
@@ -25,6 +27,8 @@ const game = document.querySelector('#game'),
       targetSumUI = document.querySelector('#target-sum'),
       currentSumUI = document.querySelector('#current-sum'),
       specialMsgUI = document.querySelector('#special-messages'),
+      winsUI = document.querySelector('#wins-count'),
+      lossesUI = document.querySelector('#losses-count'),
       btn1 = document.querySelector('#btn-g1'),
       btn2 = document.querySelector('#btn-g2'),
       btn3 = document.querySelector('#btn-g3'),
@@ -63,30 +67,24 @@ function initializeGame(){
 currentSumUI.value = currentSum;
 console.log("winningnumber is " + winningNumber)
 
-  
-  // Listen for start
-
-  btnStart.addEventListener('submit', function(){
-    console.log("start")
-   // console.log("button Gems disabled status " + btnGems.disabled);
-   
-  
-   })
 
 $(document).ready(function() {
 specialMsgUI.value = ""
 
 $('.gem').on('click', function() {
-  console.log('ouch');
   if (currentSum == winningNumber){
     specialMsgUI.value = "You Win";
+    wins += 1
+    winsUI.value = wins;
   } else if(currentSum < winningNumber){
-    console.log("this is " + this.value);
     currentSum += parseInt(this.value);
-    console.log("currentSum " + currentSum);
     currentSumUI.value = parseInt(currentSum);
   } else if (currentSum > winningNumber){
     specialMsgUI.value = "You lost this one";
+    losses +=1
+    lossesUI.value = losses;
+    
+
   }
 
 });
