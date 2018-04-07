@@ -2,87 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Gems Game</title>
-
-  <!-- Added link to the jQuery Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-  <!-- Added a link to Bootstrap-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Crystal Game</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    
-
+  <style>
+    #loading, #results {
+      display: none;
+    }
+  </style>
 </head>
-<body>
-
-  <!-- <div class="jumbotron">
-    <h1 class="text-center">jQuery Gems Game</h1>
-    <h3 class="text-center">Perform basic mathematic operations using the power of jQuery!</h3>
-  </div> -->
-
-  <div class="container">
-<div class="row">
-  <div class="container">
-    <div class="gem-rom bg-dark">
-      
-      <div class="col-sm-3">
-          <button class="btn btn-lg btn-success">
-        <img src="resources/img/gem1.png" width="100" alt="Gem 1"/>Testing</button>
-
-        
-          <!-- <img src="resources/img/gem1.png" class="rounded mx-auto d-block" alt="..."> -->
-      </div>
-      <div class="col-sm-3">
-        <img src="resources/img/gem2.png" alt="Gem 1"/>
-      </div>
-      <div class="col-sm-3">
-        <img src="resources/img/gem3.png" alt="Gem 1"/>
-      </div>
-      <div class="col-sm-3">
-        <img src="resources/img/gem4.png" alt="Gem 1"/>
-      </div>
-
-    </div>
-  </div>
-</div>
+<body class="bg-dark">
+  <div class="container" id="game">
     <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="card card-body text-center mt-5">
+          <h1 class="heading display-5 pb-3">Crystal Guessing Game</h1>
+          <form  id="loan-form">
 
-      <!-- Calculator Panel -->
-      <div class="col-lg-4">
-        <div class="card">
-          <h3 class="card-header">Gems</h3>
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Match to Win but not over</span>
+                    </div>
+                    <input type="number" class="form-control" id="target-sum" aria-label="Target Sum"  disabled>
+                  </div>
+            </div>
 
-          <div class="card-body">
-            <button id="button-1" class="btn btn-primary number" value="1"><h1>G 1</h1></button>
-            <button id="button-2" class="btn btn-primary number" value="2"><h1>G 2</h1></button>
-            <button id="button-3" class="btn btn-primary number" value="3"><h1>G 3</h1></button>
-            <button id="button-4" class="btn btn-primary number" value="4"><h1>G 4</h1></button>
-            <br><br>
-            <button id="button-clear" class="btn btn-dark clear" value="clear"><h1>clear</h1></button>
-          </div>
-        </div>
-      </div>
-<div class="row">
-    <h1 id="winning-number" value = "20">Winning Number<span class="winning-number-span"></span></h1>
-</div>
-      <!-- Result Panel -->
-      <div class="col-lg-4">
-        <div class="card">
-          <h3 class="card-header">Result</h3>
-          <div class="card-body">
-            <!-- <h1 id="current-sum"></h1> -->
-            <!-- <h1 id="operator"></h1> -->
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Your Current Crystal Sum is</span>
+                    </div>
+                    <input type="number" class="form-control" id="current-sum" aria-label="Current Sum" disabled>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" id="special-messages" aria-label="messages">
+                    <div class="input-group-append">
+                        <span class="input-group-text">Messages</span>
+                      </div>
+                </div>
+            </div>
             
-            <hr>
-            <h1 id="current-sum"></h1>
+            <div class="form-group">
+              <input type="submit" value="Good Luck - Click to Reset" id="btn-start" class="btn btn-dark btn-block">
+            </div>
+
+            <div class="button-row">
+              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-success gem" id="btn-g1" value="1"><img src="resources/img/gem1.png" width="90px" /></button>
+                  <button type="button" class="btn btn-warning gem" id="btn-g2" value="2"><img src="resources/img/gem2.png" width="90px" /></button></button>
+                  <button type="button" class="btn btn-danger gem" id="btn-g3" value="3"><img src="resources/img/gem3.png" width="90px" /></button></button>
+                  <button type="button" class="btn btn-primary gem" id="btn-g4" value="4"><img src="resources/img/gem4.png" width="90px" /></button></button>
+                </div>
+              
+              </div>
+            </div>
+          </form>
+          <!-- LOADER HERE -->
+          <div id="loading">
+            <img src="resources/img/loading.gif" alt="">
           </div>
+          <!-- RESULTS -->
+          <div id="results" class="pt-4">
+            <h5>Results</h5>
+          
+          <!-- <div class="form-group">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Monthly Payment</span>
+                  </div>
+                  <input type="number" class="form-control" id="monthly-payment" aria-label="Monthly Payment" disabled>
+                  </div>
+              </div> -->
+
+          <!-- <div class="form-group">
+              <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Total Payment</span>
+                  </div>
+                  <input type="number" class="form-control" id="total-payment" aria-label="Total Payment" disabled>
+                  </div>
+              </div> -->
+          
+              <!-- <div class="form-group">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Total Interest</span>
+                      </div>
+                      <input type="number" class="form-control" id="total-interest" aria-label="Total Interest" disabled>
+                      </div>
+                  </div> -->
+        </div>
         </div>
       </div>
     </div>
+
   </div>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="resources/js/app.js"></script>
-
+<script src="resources/js/app3.js"></script>
 </body>
 </html>
